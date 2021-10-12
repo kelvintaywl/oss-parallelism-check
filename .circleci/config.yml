@@ -8,7 +8,7 @@ jobs:
     steps:
       - run:
           name: Greet
-          command: echo "I love ${COLOR} builds."
+          command: echo "Please give me ${COLOR} builds..."
           environment:
             COLOR: "green"
 
