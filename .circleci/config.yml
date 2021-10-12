@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   echo:
+    parallelism: 3
     docker:
       - image: cimg/base:stable
     steps:
