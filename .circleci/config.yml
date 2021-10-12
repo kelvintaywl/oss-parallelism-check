@@ -12,7 +12,21 @@ jobs:
           environment:
             COLOR: "green"
 
+  commits:
+    parallelism: 1
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Check last commit
+          command: |
+            # See PRETTY FORMATS section for pretty format options
+            # https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-log.html#:~:text=PRETTY-,FORMATS,-If%20the%20commit
+            LAST_COMMIT="$(git log -n 1 --pretty=format:"%ad" --date=iso)"
+            echo $LAST_COMMIT
+
 workflows:
   main:
     jobs:
-      - echo
+      - commits
